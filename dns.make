@@ -34,8 +34,8 @@ ifeq ($(config),debug)
   DEFINES   += -DBOOST_CHRONO_HEADER_ONLY
   INCLUDES  += -Iinclude
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -O0 -Wall
-  CXXFLAGS  += $(CFLAGS) 
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -O0 -Wall -fPIC
+  CXXFLAGS  += $(CFLAGS)
   LDFLAGS   += -rdynamic -shared
   LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
@@ -56,7 +56,7 @@ ifeq ($(config),release)
   DEFINES   += -DBOOST_CHRONO_HEADER_ONLY -DNDEBUG
   INCLUDES  += -Iinclude
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -ffast-math -fmerge-all-constants -fno-strict-aliasing -fvisibility=hidden -fvisibility-inlines-hidden -O3 -Wall
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -ffast-math -fmerge-all-constants -fno-strict-aliasing -fvisibility=hidden -fvisibility-inlines-hidden -O3 -Wall -fPIC
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s -shared
   LIBS      += 
